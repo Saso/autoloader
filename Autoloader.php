@@ -50,7 +50,7 @@ class Autoloader {
      * @param string $className namespace+class, which needs to be defined (include/require).
      * @throws \Exception
      */
-    public function defineClass( $namespaceClassName ) {
+    public function defineClass( string $namespaceClassName ) {
         $filePath = $this->findClassFilepath( $namespaceClassName );
 
         if( file_exists($filePath) ) {
@@ -67,12 +67,12 @@ class Autoloader {
     // private functions below
     //
     
-	/**
-	 * Method maps the \namespace\class to the class definition file, to be able to be instantiated.
-	 * @param string $className Name of the class, to be defined
-	 * @return mixed (absolute path to the file) or throws an Exception
-	 */
-    private function findClassFilepath( $className ) {
+    /**
+     * Method maps the \namespace\class to the class definition file, to be able to be instantiated.
+     * @param string $className Name of the class, to be defined
+     * @return mixed (absolute path to the file) or throws an Exception
+     */
+    private function findClassFilepath( string $className ) {
         list( $namespace, $class) = $this->parseClassName($className);
         list( $matchedNS, $restOfNS ) = $this->matchLongestRegNamespace( $namespace );
 
@@ -92,7 +92,7 @@ class Autoloader {
      * @return array with 2 elements, both arrays of namespace elements
      * @throws \Exception
      */
-    private function matchLongestRegNamespace( $namespace ) {
+    private function matchLongestRegNamespace( string $namespace ) {
         $origNamespace = $namespace;
         $namespace = explode( '\\', ltrim($namespace,'\\') );
         $tmpLength = count( $namespace );
@@ -114,10 +114,10 @@ class Autoloader {
      * @param string $namespaceClassName namespace + classname, to be parsed.
      * @return array Array of namespace and classname values.
      */
-    private function parseClassName( $namespaceClassName ) {
-        $position	= strrpos( $namespaceClassName, '\\' );         //Find the position of the last occurrence of \
-        $namespace	= substr( $namespaceClassName, 0, $position );  //Return part of a string that define the path
-        $class		= substr( $namespaceClassName, $position+1 );
+    private function parseClassName( string $namespaceClassName ) {
+        $position   = strrpos( $namespaceClassName, '\\' );         //Find the position of the last occurrence of \
+        $namespace  = substr( $namespaceClassName, 0, $position );  //Return part of a string that define the path
+        $class      = substr( $namespaceClassName, $position+1 );
 
         return array(
             $namespace,
