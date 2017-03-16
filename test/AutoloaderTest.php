@@ -64,9 +64,9 @@ class AutoloaderCase extends TestCase {
         $autoloader = new Autoloader;
         
         $this->assertTrue( method_exists($autoloader, 'registerNamespace'),       'Method: Autoloader::registerNamespace is not defined.' );
-        $this->assertTrue( method_exists($autoloader, 'init'),                    'Method: Autoloader::init is not defined.' );
         $this->assertTrue( method_exists($autoloader, 'defineClass'),             'Method: Autoloader::defineClass is not defined.' );
         // private..
+        $this->assertTrue( method_exists($autoloader, 'init'),                    'Method: Autoloader::init is not defined.' );
         $this->assertTrue( method_exists($autoloader, 'parseClassName'),          'Method: Autoloader::parseClassName is not defined.' );
         $this->assertTrue( method_exists($autoloader, 'matchLongestRegNamespace'),'Method: Autoloader::matchLongestRegNamespace is not defined.' );
         $this->assertTrue( method_exists($autoloader, 'findClassFilepath'),       'Method: Autoloader::findClassFile is not defined.' );
@@ -87,7 +87,6 @@ class AutoloaderCase extends TestCase {
      */
     function testInit() {
         $autoloader = new Autoloader();
-        $autoloader->init();
 
         $foo = new \Looking\Fo\r\MyClass();
     }
@@ -98,7 +97,6 @@ class AutoloaderCase extends TestCase {
     function testActualAutoloading() {
         $autoloader = new Autoloader();
         $autoloader->registerNamespace( 'Just', __DIR__.'/fixtures' );
-        $autoloader->init();
         
         try {
             $fo2 = new \Just\AnotherClass;

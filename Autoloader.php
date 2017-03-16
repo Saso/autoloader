@@ -19,7 +19,10 @@ class Autoloader {
      */
     private $classPaths = array();
 
-
+    public function __construct() {
+        $this->init();
+    }
+    
     /**
      * Registers a namespace with a path.
      * @param string $namespace Namespace to be registered
@@ -32,15 +35,6 @@ class Autoloader {
         } else {
             throw new \Exception( "Namespace '{$namespace}' with value '{$namespace}' can't be registered, as it's already registered with value'{$this->classPaths[$namespace]}'." );
         }
-    }
-
-    /**
-     * Register autoloader's method with SPL hook/trigger
-     * @uses spl_autoload_register()
-     * @throws \Exception
-     */
-    public function init() {
-        spl_autoload_register( array( $this, 'defineClass' ), true );
     }
 
     /**
@@ -67,6 +61,15 @@ class Autoloader {
     // private functions below
     //
     
+    /**
+     * Register autoloader's method with SPL hook/trigger
+     * @uses spl_autoload_register()
+     * @throws \Exception
+     */
+    private function init() {
+        spl_autoload_register( array( $this, 'defineClass' ), true );
+    }
+
     /**
      * Method maps the \namespace\class to the class definition file, to be able to be instantiated.
      * @param string $className Name of the class, to be defined
