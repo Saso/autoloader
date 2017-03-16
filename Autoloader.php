@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace \Autoloader;
+namespace Autoloader;
 
 /**
  * Autoloader is avtomatically invoked for any undefined class and includes its class file, to define the class.
