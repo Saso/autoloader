@@ -3,12 +3,16 @@
 ## Instalation
 Add this to your compose.json:
 ```
+    "require": {
+        "Saso/autoloader": "dev-master"
+    },
+    
     "repositories": [
         {
             "type": "vcs",
             "url":  "git@github.com:Saso/autoloader.git"
         }
-    ],
+    ]
 ```
 or, just clone this repo.
 
