@@ -1,0 +1,12 @@
+{
+    "name": "Saso/autoloader",
+    "description": "psr-4 compatible autoloader for PHP",
+    
+    "authors": [
+        {
+            "name": "Saso Filipovic",
+            "email": "saso.filipovic@gmail.com"
+        }
+    ]
+
+}
