@@ -43,7 +43,9 @@ class Autoloader {
     public function defineClass( string $namespaceClassName ) {
         $filePath = $this->findClassFilepath( $namespaceClassName );
 
-        if( file_exists($filePath) ) {
+        if ($filePath===false) { // no path found
+            return false;
+        } elseif( file_exists($filePath) ) {
             include( $filePath );
             if (!class_exists($namespaceClassName, false)) {
                 throw new \Exception("File '{$filePath}' was included, but class '{$namespaceClassName}' is still not defined.");
@@ -74,6 +76,9 @@ class Autoloader {
     private function findClassFilepath( string $className ) {
         list( $namespace, $class) = $this->parseClassName($className);
         list( $matchedNS, $restOfNS ) = $this->matchLongestRegNamespace( $namespace );
+        if ($matchedNS === false) { // none found
+            return false;
+        }
 
         $matchedNS = '\\' . implode( '\\', $matchedNS );
         $restPath  = (count($restOfNS)>0) ? '/' : '';
@@ -106,7 +111,7 @@ class Autoloader {
         }
 
         // none is found
-        throw new \Exception( "Namespace '{$origNamespace}' doesn't exist among registered namespaces." );
+        return array(false, false); // 2 vals expected!
     }
     /**
      * Splits full namespace\class to two elements.

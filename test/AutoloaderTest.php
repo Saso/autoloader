@@ -70,15 +70,6 @@ class AutoloaderTest extends TestCase {
         $autoloader->registerNamespace( '\fake3', '/some/path' );
         $autoloader->registerNamespace( '\fake3', '/path/to/non/unique/3' ); // duplicated value
     }
-
-    /**
-     * @expectedException \Exception
-     */
-    function testInit() {
-        $autoloader = new Autoloader();
-
-        $foo = new \Looking\Fo\r\My\MyClass();
-    }
     
     /**
      * @expectedException \Exception
