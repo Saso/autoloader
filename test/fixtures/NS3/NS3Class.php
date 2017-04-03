@@ -1,9 +1,9 @@
 <?php
-namespace Just;
+namespace NS3; // separate NS
 
 use \Base\Base;
 
-class AnotherClass  extends Base {
+class NS3Class {
     public function getPath() {
         $path = __FILE__;
         //echo "\nPath: '{$path}'\n\n";

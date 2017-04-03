@@ -13,10 +13,6 @@ namespace Autoloader;
  */
 class Autoloader {
     
-    /**
-     *
-     * @var type
-     */
     private $classPaths = array();
 
     public function __construct() {
@@ -33,7 +29,7 @@ class Autoloader {
         if ( !isset( $this->classPaths[ $namespace ] ) ) {
             $this->classPaths[ $namespace ] = $path; // clean values registered
         } else {
-            throw new \Exception( "Namespace '{$namespace}' with value '{$namespace}' can't be registered, as it's already registered with value'{$this->classPaths[$namespace]}'." );
+            throw new \Exception( "Namespace '{$namespace}' with value '{$path}' can't be registered, as it's already registered with value'{$this->classPaths[$namespace]}'." );
         }
     }
 

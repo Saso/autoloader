@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.0/phpunit.xsd"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+        stopOnRisky="false"
+        bootstrap=""
+        colors="true"
+        forceCoversAnnotation="false"
+        beStrictAboutCoversAnnotation="false"
+        beStrictAboutOutputDuringTests="false"
+        beStrictAboutTodoAnnotatedTests="false"
+        verbose="true"
+        processIsolation="true">
+    <testsuites>
+        <testsuite>
+            <directory suffix="Test.php">./</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+      <whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">../source</directory>
+      </whitelist>
+    </filter>
+    <logging>
+      <log type="coverage-text" target="php://stdout" showUncoveredFiles="true" />
+      <log type="coverage-html" target="../reports" lowUpperBound="20" highLowerBound="60"/>
+    </logging>
+</phpunit>
