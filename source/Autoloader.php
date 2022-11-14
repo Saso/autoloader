@@ -7,7 +7,7 @@ namespace Autoloader;
  * Autoloader is avtomatically invoked for any undefined class and includes its class file, to define the class.
  * Later, it also check, if class was sucessfully defined.
  * Namespaces should always be in the form: \this\is\namespace\class
- * Paths must always be absolute paths in form /this/is/path (for linux)
+ * Paths must always be absolute paths in form /this/is/a/path (for linux)
  *
  * @author Saso Filipovic <saso.filipovic@gmail.com>
  */
